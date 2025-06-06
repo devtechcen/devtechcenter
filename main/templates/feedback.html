@@ -1,0 +1,25 @@
+{% extends "base.html" %} {% block content %}
+<div class="login-container">
+  <h2>Обратная связь</h2>
+
+  <form method="post" class="login-form">
+    {% csrf_token %} {% if form.errors %}
+    <div class="error-message">Пожалуйста, исправьте ошибки в форме.</div>
+    {% endif %}
+
+    <label for="{{ form.name.id_for_label }}">Имя</label>
+    {{ form.name }}
+
+    <label for="{{ form.email.id_for_label }}">Email</label>
+    {{ form.email }}
+
+    <label for="{{ form.phone.id_for_label }}">Телефон</label>
+    {{ form.phone }}
+
+    <label for="{{ form.description.id_for_label }}">Описание</label>
+    {{ form.description }}
+
+    <button type="submit" class="btn-login">Отправить</button>
+  </form>
+</div>
+{% endblock %}

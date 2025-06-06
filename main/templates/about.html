@@ -1,0 +1,51 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+
+<section class="info-grid">
+  <div class="info-block text-block">
+    <h2>Наша миссия</h2>
+    <p>
+      Компания «ЦЕНТР ТЕХНОЛОГИИ РАЗВИТИЯ» стремится способствовать устойчивому
+      развитию бизнеса наших клиентов через инновационные решения и
+      профессиональные консультации. Мы верим в силу партнерства и постоянного
+      роста.
+    </p>
+  </div>
+
+  <div class="info-block image-block">
+    <img
+      src="{% static 'img/team-collaboration.jpg' %}"
+      alt="Team Collaboration"
+    />
+  </div>
+
+  <div class="info-block image-block">
+    <img
+      src="{% static 'img/strategy-planning.jpg' %}"
+      alt="Strategy Planning"
+    />
+  </div>
+
+  <div class="info-block text-block">
+    <h2>Наши ценности</h2>
+    <p>
+      Честность, ответственность и инновации — ключевые принципы нашей работы.
+      Мы стремимся создавать долгосрочные отношения с клиентами, основываясь на
+      взаимном доверии и высоком качестве предоставляемых услуг.
+    </p>
+  </div>
+
+  <div class="info-block text-block">
+    <h2>Команда профессионалов</h2>
+    <p>
+      Наш коллектив состоит из опытных специалистов в области управления,
+      финансов и цифровых технологий. Мы постоянно повышаем квалификацию, чтобы
+      предлагать нашим клиентам самые современные и эффективные решения.
+    </p>
+  </div>
+
+  <div class="info-block image-block">
+    <img src="{% static 'img/consultants.jpg' %}" alt="Our Consultants" />
+  </div>
+</section>
+
+{% endblock %}

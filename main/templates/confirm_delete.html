@@ -1,0 +1,15 @@
+{% extends "base.html" %} {% block content %}
+<div class="login-container confirm-delete-container">
+  <h2>Удалить заявку?</h2>
+  <p>
+    Вы уверены, что хотите удалить заявку: "<strong
+      >{{ submission.name }}</strong
+    >"?
+  </p>
+  <form method="post">
+    {% csrf_token %}
+    <button type="submit" class="btn-login btn-delete">Удалить</button>
+    <a href="{% url 'profile' %}" class="login-link">Отмена</a>
+  </form>
+</div>
+{% endblock %}

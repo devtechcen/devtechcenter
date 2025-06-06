@@ -1,0 +1,10 @@
+{% extends "base.html" %} {% block content %}
+<div class="login-container">
+  <h2>Редактировать заявку</h2>
+  <form method="post" class="login-form" novalidate>
+    {% csrf_token %} {{ form.as_p }}
+    <button type="submit" class="btn-login">Сохранить</button>
+    <a href="{% url 'profile' %}" class="login-link">Отмена</a>
+  </form>
+</div>
+{% endblock %}

@@ -1,0 +1,58 @@
+{% extends "base.html" %} {% block content %}
+<div class="login-container">
+  <h2>Регистрация</h2>
+
+  <form method="post" action="{% url 'register' %}" class="login-form">
+    {% csrf_token %} {% if form.errors %}
+    <div class="error-message">Ошибка регистрации</div>
+    {% endif %}
+
+    <label for="{{ form.username.id_for_label }}">Имя пользователя</label>
+    <input
+      type="text"
+      name="{{ form.username.html_name }}"
+      id="{{ form.username.id_for_label }}"
+      value="{{ form.username.value|default_if_none:'' }}"
+      required
+      autofocus
+      autocomplete="username"
+      class="input"
+    />
+
+    <label for="{{ form.email.id_for_label }}">Email</label>
+    <input
+      type="email"
+      name="{{ form.email.html_name }}"
+      id="{{ form.email.id_for_label }}"
+      value="{{ form.email.value|default_if_none:'' }}"
+      required
+      autocomplete="email"
+      class="input"
+    />
+
+    <label for="{{ form.password1.id_for_label }}">Пароль</label>
+    <input
+      type="password"
+      name="{{ form.password1.html_name }}"
+      id="{{ form.password1.id_for_label }}"
+      required
+      autocomplete="new-password"
+      class="input"
+    />
+
+    <label for="{{ form.password2.id_for_label }}">Подтвердите пароль</label>
+    <input
+      type="password"
+      name="{{ form.password2.html_name }}"
+      id="{{ form.password2.id_for_label }}"
+      required
+      autocomplete="new-password"
+      class="input"
+    />
+
+    <button type="submit" class="btn-login">Зарегистрироваться</button>
+  </form>
+
+  <p class="login-link">Есть аккаунт? <a href="{% url 'login' %}">Войти</a></p>
+</div>
+{% endblock %}

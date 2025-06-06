@@ -1,0 +1,38 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+<div class="hero-image">
+  <img src="{% static 'img/hero.png' %}" alt="Hero Image" />
+</div>
+
+<section class="info-grid">
+  <div class="info-block image-block">
+    <img src="{% static 'img/consulting.webp' %}" alt="Consulting Image" />
+  </div>
+
+  <div class="info-block text-block">
+    <h2>О компании</h2>
+    <p>
+      Компания «ЦЕНТР ТЕХНОЛОГИИ РАЗВИТИЯ» — это современная организация,
+      специализирующаяся на консультировании по вопросам коммерческой
+      деятельности и управления. Наша цель — помогать компаниям адаптироваться к
+      быстро меняющимся условиям рынка и достигать устойчивого роста.
+    </p>
+  </div>
+
+  <div class="info-block text-block">
+    <h2>Наш подход</h2>
+    <p>
+      Мы предлагаем комплексные решения, основанные на глубоком анализе
+      бизнес-процессов клиента. Наши консультанты обладают обширным опытом в
+      стратегическом планировании, оптимизации и цифровой трансформации бизнеса.
+    </p>
+  </div>
+
+  <div class="info-block image-block">
+    <img src="{% static 'img/conference.jpg' %}" alt="Consulting Strategy" />
+  </div>
+
+  <div class="full-width-button">
+    <a href="#" class="cta-button">Оставить заявку</a>
+  </div>
+</section>
+{% endblock %}

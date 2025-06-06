@@ -1,0 +1,76 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Центр технологии развития</title>
+    <link rel="stylesheet" href="{% static 'css/base.css' %}" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="page-container">
+      <header class="navbar" id="mainNavbar">
+        <div class="navbar-left">
+          <a href="{% url 'main' %}" class="site-title"
+            >Центр технологии развития</a
+          >
+        </div>
+        <div class="navbar-center">
+          <nav class="nav-links">
+            <a href="{% url 'about' %}">О нас</a>
+            <a href="{% url 'create_submission' %}">Оставить заявку</a>
+            <a href="{% url 'contacts' %}">Контакты</a>
+            <a href="{% url 'feedback' %}">Форма обратной связи</a>
+            <a href="{% url 'faq' %}">FAQ</a>
+          </nav>
+        </div>
+        <div class="navbar-right">
+          {% if user.is_authenticated %}
+          <span class="nav-username"><strong>{{ user.username }}</strong></span>
+          <a href="{% url "profile" %}" class="icon-link">Личный кабинет</a>
+          <form
+            method="post"
+            action="{% url 'logout' %}"
+            style="display: inline"
+          >
+            {% csrf_token %}
+            <button type="submit" class="icon-link btn-logout">
+              <svg width="20" height="20"><!-- Выйти icon --></svg>
+              Выйти
+            </button>
+          </form>
+          {% else %}
+          <a href="{% url 'login' %}" class="icon-link">
+            <svg width="20" height="20"><!-- Вход icon --></svg>
+            Вход
+          </a>
+          <a href="{% url "register" %}" class="icon-link">
+            <svg width="20" height="20"><!-- Регистрация icon --></svg>
+            Регистрация
+          </a>
+          {% endif %}
+        </div>
+      </header>
+
+      <main class="main-content">{% block content %} {% endblock %}</main>
+
+      <footer class="site-footer">
+        &copy; ООО "Центр Технологии Развития"
+      </footer>
+    </div>
+  </body>
+</html>
+
+<script>
+  window.addEventListener("scroll", function () {
+    const navbar = document.getElementById("mainNavbar");
+    if (window.scrollY > 0) {
+      navbar.classList.add("scrolled");
+    } else {
+      navbar.classList.remove("scrolled");
+    }
+  });
+</script>
