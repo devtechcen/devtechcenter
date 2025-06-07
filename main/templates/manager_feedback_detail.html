@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="login-container">
+  <h2>Детали отзыва</h2>
+
+  <p><strong>Имя:</strong> {{ feedback.name }}</p>
+  <p><strong>Email:</strong> {{ feedback.email }}</p>
+  <p><strong>Телефон:</strong> {{ feedback.phone }}</p>
+  <p><strong>Описание:</strong> {{ feedback.description }}</p>
+  <p><strong>Статус:</strong> {{ feedback.status }}</p>
+  <p>
+    <strong>Дата подачи:</strong> {{ feedback.submission_date|date:"d.m.Y H:i" }}
+  </p>
+
+  {% if feedback.status != 'рассмотрено' %}
+  <p class="login-link">
+    <a href="{% url 'mark_feedback_reviewed' feedback.id %}"
+       onclick="return confirm('Вы уверены, что хотите отметить отзыв как рассмотренный?');">
+       Отметить как рассмотренный
+    </a>
+  </p>
+  {% endif %}
+
+  <p class="login-link"><a href="{% url 'manager_panel' %}">← Назад к панели менеджера</a></p>
+</div>
+{% endblock %}

@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .forms import CustomUserCreationForm, SubmissionForm, FeedbackForm
 from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required, user_passes_test
-from .models import Submission
+from .models import Submission, Feedback
 from django.utils import timezone
 from django.contrib.auth.models import User
 from django.core.paginator import Paginator
@@ -31,6 +31,10 @@ def feedback_thanks(request):
     return render(request, "feedback_thanks.html")
 
 
+def submission_thanks(request):
+    return render(request, "submission_thanks.html")
+
+
 def register_view(request):
     if request.method == "POST":
         form = CustomUserCreationForm(request.POST)
@@ -54,7 +58,7 @@ def create_submission_view(request):
             submission.user = request.user
             submission.save()
 
-            return redirect("main")
+            return redirect("submission_thanks")
     else:
         form = SubmissionForm()
     return render(request, "create_submission.html", {"form": form})
@@ -112,7 +116,16 @@ def manager_panel(request):
         return redirect("main")
 
     submissions = Submission.objects.filter(employee=request.user)
-    return render(request, "manager_panel.html", {"submissions": submissions})
+    feedbacks = Feedback.objects.exclude(status="рассмотрено")
+
+    return render(
+        request,
+        "manager_panel.html",
+        {
+            "submissions": submissions,
+            "feedbacks": feedbacks,
+        },
+    )
 
 
 @login_required
@@ -137,6 +150,32 @@ def manager_submission_detail(request, submission_id):
             "field_labels": field_labels,
         },
     )
+
+
+@login_required
+def manager_feedback_detail(request, pk):
+    if request.user.userprofile.role != "manager":
+        return redirect("main")
+
+    feedback = get_object_or_404(Feedback, pk=pk)
+
+    if request.method == "POST":
+        feedback.status = "рассмотрено"
+        feedback.save()
+        return redirect("manager_panel")
+
+    return render(request, "manager_feedback_detail.html", {"feedback": feedback})
+
+
+@login_required
+def mark_feedback_reviewed(request, feedback_id):
+    if request.user.userprofile.role != "manager":
+        return redirect("main")
+
+    feedback = get_object_or_404(Feedback, id=feedback_id)
+    feedback.status = "рассмотрено"
+    feedback.save()
+    return redirect("manager_panel")
 
 
 def is_admin(user):

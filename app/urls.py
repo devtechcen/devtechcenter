@@ -33,6 +33,7 @@ urlpatterns = [
     path("logout/", auth_views.LogoutView.as_view(next_page="/"), name="logout"),
     path("register/", views.register_view, name="register"),
     path("create_submission/", views.create_submission_view, name="create_submission"),
+    path("submission_thanks/", views.submission_thanks, name="submission_thanks"),
     path("feedback/", views.feedback_view, name="feedback"),
     path("feedback/thanks/", views.feedback_thanks, name="feedback_thanks"),
     path("profile/", views.profile_view, name="profile"),
@@ -51,6 +52,16 @@ urlpatterns = [
         "submission/<int:submission_id>/",
         views.manager_submission_detail,
         name="manager_submission_detail",
+    ),
+    path(
+        "manager/feedback/<int:pk>/",
+        views.manager_feedback_detail,
+        name="manager_feedback_detail",
+    ),
+    path(
+        "mark_feedback_reviewed/<int:feedback_id>/",
+        views.mark_feedback_reviewed,
+        name="mark_feedback_reviewed",
     ),
     path("admin-panel/", views.admin_panel_view, name="admin_panel_view"),
     path(
