@@ -207,7 +207,7 @@ iframe {
 
 .faq-container {
   max-width: 700px;
-  margin: 40px auto;
+  margin: 10px auto;
   padding: 0 20px;
   font-family: Montserrat, sans-serif;
   color: #003366;
@@ -222,6 +222,10 @@ iframe {
   margin-bottom: 25px;
   border-bottom: 1px solid #ccc;
   padding-bottom: 15px;
+}
+
+.last-faq-item {
+  border-bottom: none;
 }
 
 .question {
@@ -417,4 +421,25 @@ select:focus, textarea:focus {
 .filter-form select {
   margin-left: 10px;
   padding: 5px;
+}
+
+.pagination {
+  margin-top: 10px;
+}
+
+.admin-button {
+  background-color: #003366;
+  color: white;
+  padding: 7px 20px;
+  margin-left: 10px;
+  font-size: 16px;
+  border: none;
+  border-radius: 6px;
+  transition: background-color 0.3s ease;
+}
+
+.admin-button:hover {
+  background-color: #fa9304;
+  color: white;
+  cursor: pointer;
 }

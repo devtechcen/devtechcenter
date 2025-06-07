@@ -37,7 +37,16 @@ class Submission(models.Model):
     name = models.CharField(max_length=100)
     email = models.EmailField()
     category = models.CharField(
-        max_length=100, choices=[("A", "Категория А"), ("B", "Категория B")]
+        max_length=100,
+        choices=[
+            ("Development", "Стратегическое планирование и развитие бизнеса"),
+            ("Organization", "Организационная структура и управление персоналом"),
+            ("Finances", "Финансовое планирование и бюджетирование"),
+            ("Marketing", "Маркетинг и продвижение"),
+            ("Automatization", "Автоматизация бизнес-процессов"),
+            ("Bureaucracy", "Юридическое сопровождение и лицензирование"),
+            ("Investments", "Инвестиции и поиск партнёров"),
+        ],
     )
     description = models.TextField()
     submission_date = models.DateTimeField(auto_now_add=True)

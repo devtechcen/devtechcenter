@@ -5,6 +5,7 @@ from django.contrib.auth.decorators import login_required, user_passes_test
 from .models import Submission
 from django.utils import timezone
 from django.contrib.auth.models import User
+from django.core.paginator import Paginator
 
 
 # Create your views here.
@@ -145,27 +146,44 @@ def is_admin(user):
 @user_passes_test(is_admin, login_url="login")
 def admin_panel_view(request):
     managers = User.objects.filter(userprofile__role="manager")
+    all_users = User.objects.all()
     selected_manager_id = request.GET.get("manager")
 
+    # Filter submissions by selected manager
     submissions = (
         Submission.objects.select_related("employee", "user")
         .all()
         .order_by("-submission_date")
     )
-
     if selected_manager_id:
         if selected_manager_id == "none":
             submissions = submissions.filter(employee__isnull=True)
         else:
             submissions = submissions.filter(employee_id=selected_manager_id)
 
+    # Pagination logic
+    paginator = Paginator(submissions, 10)  # Show 10 submissions per page
+    page_number = request.GET.get("page")
+    page_obj = paginator.get_page(page_number)
+
+    # Handle adding a manager
+    if request.method == "POST":
+        selected_user_id = request.POST.get("new_manager")
+        if selected_user_id:
+            user = get_object_or_404(User, id=selected_user_id)
+            profile = user.userprofile
+            profile.role = "manager"
+            profile.save()
+            return redirect("admin_panel_view")
+
     return render(
         request,
         "admin_panel.html",
         {
-            "submissions": submissions,
+            "page_obj": page_obj,
             "managers": managers,
             "selected_manager_id": selected_manager_id,
+            "all_users": all_users,
         },
     )
 
