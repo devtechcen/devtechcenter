@@ -14,9 +14,9 @@
     <div class="page-container">
       <header class="navbar" id="mainNavbar">
         <div class="navbar-left">
-          <a href="{% url 'main' %}" class="site-title"
-            >Центр технологии развития</a
-          >
+          <a href="{% url 'main' %}" class="site-title">
+            Центр технологии развития
+          </a>
         </div>
         <div class="navbar-center">
           <nav class="nav-links">
@@ -30,7 +30,18 @@
         <div class="navbar-right">
           {% if user.is_authenticated %}
           <span class="nav-username"><strong>{{ user.username }}</strong></span>
-          <a href="{% url "profile" %}" class="icon-link">Личный кабинет</a>
+          {% if user.userprofile.role == 'admin' %}
+          <a href="{% url 'admin_panel_view' %}" class="icon-link"
+            >Админ-панель</a
+          >
+          {% elif user.userprofile.role == 'manager' %}
+          <a href="{% url 'manager_panel' %}" class="icon-link"
+            >Менеджмент панель</a
+          >
+          {% else %}
+          <a href="{% url 'profile' %}" class="icon-link">Личный кабинет</a>
+          {% endif %}
+
           <form
             method="post"
             action="{% url 'logout' %}"
@@ -47,7 +58,7 @@
             <svg width="20" height="20"><!-- Вход icon --></svg>
             Вход
           </a>
-          <a href="{% url "register" %}" class="icon-link">
+          <a href="{% url 'register' %}" class="icon-link">
             <svg width="20" height="20"><!-- Регистрация icon --></svg>
             Регистрация
           </a>
@@ -55,22 +66,22 @@
         </div>
       </header>
 
-      <main class="main-content">{% block content %} {% endblock %}</main>
+      <main class="main-content">{% block content %}{% endblock %}</main>
 
       <footer class="site-footer">
         &copy; ООО "Центр Технологии Развития"
       </footer>
     </div>
+
+    <script>
+      window.addEventListener("scroll", function () {
+        const navbar = document.getElementById("mainNavbar");
+        if (window.scrollY > 0) {
+          navbar.classList.add("scrolled");
+        } else {
+          navbar.classList.remove("scrolled");
+        }
+      });
+    </script>
   </body>
 </html>
-
-<script>
-  window.addEventListener("scroll", function () {
-    const navbar = document.getElementById("mainNavbar");
-    if (window.scrollY > 0) {
-      navbar.classList.add("scrolled");
-    } else {
-      navbar.classList.remove("scrolled");
-    }
-  });
-</script>

@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="profile-wrapper">
+  <h2>Детали заявки</h2>
+
+  <div class="detail-card">
+    <p><strong>ID:</strong> {{ submission.id }}</p>
+    <p><strong>Название:</strong> {{ submission.name }}</p>
+    <p><strong>Email:</strong> {{ submission.email }}</p>
+    <p><strong>Категория:</strong> {{ submission.category }}</p>
+    <p><strong>Описание:</strong> {{ submission.description }}</p>
+    <p><strong>Пользователь:</strong> {{ submission.user.username }}</p>
+    <p><strong>Дата подачи:</strong> {{ submission.submission_date|date:"d.m.Y H:i" }}</p>
+    <p><strong>Дата обработки:</strong>
+      {% if submission.processed_at %}
+        {{ submission.processed_at|date:"d.m.Y H:i" }}
+      {% else %}
+        -
+      {% endif %}
+    </p>
+    <p><strong>Статус:</strong> {{ submission.status }}</p>
+    <p><strong>Назначенный менеджер:</strong>
+      {% if submission.employee %}
+        {{ submission.employee.username }}
+      {% else %}
+        Не назначен
+      {% endif %}
+    </p>
+
+    <form method="post" class="login-form">
+      {% csrf_token %}
+      <label for="manager">Назначить менеджера</label>
+      <select name="manager" id="manager" required>
+        {% for manager in managers %}
+        <option value="{{ manager.id }}" {% if submission.employee.id == manager.id %}selected{% endif %}>
+          {{ manager.username }}
+        </option>
+        {% endfor %}
+      </select>
+      <button type="submit" class="btn-login">Сохранить</button>
+    </form>
+  </div>
+</div>
+{% endblock %}

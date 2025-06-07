@@ -1,0 +1,27 @@
+{% extends "base.html" %} {% block content %}
+<div class="login-container">
+  <h2>Детали заявки</h2>
+
+  <p><strong>Название:</strong> {{ submission.name }}</p>
+  <p><strong>Email:</strong> {{ submission.email }}</p>
+  <p><strong>Категория:</strong> {{ submission.category }}</p>
+  <p><strong> Описание:</strong> {{submission.description}}</p>
+  <p><strong>Статус:</strong> {{ submission.status }}</p>
+  <p>
+    <strong>Дата подачи:</strong> {{submission.submission_date|date:"d.m.Y H:i"}}
+  </p>
+
+  {% if submission.status != 'обработана' %}
+  <p class="login-link">
+    <a href="{%url 'mark_as_processed' submission.id%}" 
+    onclick="return confirm('Вы уверены, что хотите отметить заявку как обработанную?');">
+    Отметить как обработнную
+    </a>
+  </p>
+  {% endif %}
+
+  <br /><br />
+  <p class="login-link"><a href="{% url 'manager_panel' %}">← Назад к заявкам</a></p>
+</div>
+</div>
+{% endblock %}

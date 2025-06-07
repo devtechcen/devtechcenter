@@ -46,4 +46,21 @@ urlpatterns = [
         views.delete_submission_view,
         name="delete_submission",
     ),
+    path("manager_panel/", views.manager_panel, name="manager_panel"),
+    path(
+        "submission/<int:submission_id>/",
+        views.manager_submission_detail,
+        name="manager_submission_detail",
+    ),
+    path("admin-panel/", views.admin_panel_view, name="admin_panel_view"),
+    path(
+        "admin-panel/submission/<int:submission_id>/",
+        views.admin_submission_detail_view,
+        name="admin_submission_detail",
+    ),
+    path(
+        "submission/<int:submission_id>/mark_processed/",
+        views.mark_as_processed,
+        name="mark_as_processed",
+    ),
 ]

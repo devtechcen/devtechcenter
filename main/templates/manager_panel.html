@@ -1,12 +1,13 @@
 {% extends "base.html" %} {% block content %}
 <div class="profile-wrapper">
-  <h2>Мои заявки</h2>
+  <h2>Назначенные заявки</h2>
 
   <div class="table-container">
     <table class="submission-table">
       <thead>
         <tr>
           <th>Название</th>
+          <th>Пользователь</th>
           <th>Статус</th>
           <th>Дата подачи</th>
           <th>Дата обработки</th>
@@ -17,28 +18,24 @@
         {% for sub in submissions %}
         <tr>
           <td>{{ sub.name }}</td>
+          <td>{{ sub.user.username }}</td>
           <td>{{ sub.status }}</td>
           <td>{{ sub.submission_date|date:"d.m.Y H:i" }}</td>
           <td>
-            {%if sub.processed_at %}{{ sub.processed_at|date:"d.m.YH:i"
-            }}{%else%}-{% endif %}
+            {% if sub.processed_at %} {{ sub.processed_at|date:"d.m.Y H:i" }}
+            {%else%} - {% endif %}
           </td>
           <td>
             <a
-              href="{% url 'edit_submission' sub.id %}"
+              href="{% url 'manager_submission_detail' sub.id %}"
               class="btn-small btn-edit"
-              >Редактировать</a
-            >
-            <a
-              href="{% url 'delete_submission' sub.id %}"
-              class="btn-small btn-delete"
-              >Удалить</a
+              >Открыть</a
             >
           </td>
         </tr>
         {% empty %}
         <tr>
-          <td colspan="5">Заявки не найдены.</td>
+          <td colspan="6">Нет заявок, назначенных вам.</td>
         </tr>
         {% endfor %}
       </tbody>

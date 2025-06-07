@@ -279,7 +279,9 @@ select, textarea {
 }
 
 .login-form input[type="text"]:focus,
-.login-form input[type="password"]:focus {
+.login-form input[type="password"]:focus,
+.login-form input[type="email"]:focus,
+select:focus, textarea:focus {
   outline: none;
   border-color: #fa9304;
   box-shadow: 0 0 5px rgba(250, 147, 4, 0.5);
@@ -408,3 +410,11 @@ select, textarea {
   padding: 5px 10px;
 }
 
+.filter-form {
+  margin-bottom: 10px;
+}
+
+.filter-form select {
+  margin-left: 10px;
+  padding: 5px;
+}
