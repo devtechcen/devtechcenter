@@ -32,12 +32,24 @@ class SubmissionForm(forms.ModelForm):
     class Meta:
         model = Submission
         fields = ["name", "email", "category", "description"]
+        labels = {
+            "name": "Название",
+            "email": "Email",
+            "category": "Категория",
+            "description": "Описание",
+        }
 
 
 class FeedbackForm(forms.ModelForm):
     class Meta:
         model = Feedback
         fields = ["name", "email", "phone", "description"]
+        labels = {
+            "name": "Название",
+            "email": "Email",
+            "phone": "Телефон",
+            "description": "Описание",
+        }
         widgets = {
             "name": forms.TextInput(attrs={"class": "input", "required": True}),
             "email": forms.EmailInput(attrs={"class": "input", "required": True}),
