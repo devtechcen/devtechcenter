@@ -22,49 +22,6 @@ class UserProfile(models.Model):
         return f"{self.user.username} ({self.get_role_display()})"
 
 
-class Submission(models.Model):
-    user = models.ForeignKey(
-        User, on_delete=models.CASCADE, related_name="submitted_submissions"
-    )
-    employee = models.ForeignKey(
-        User,
-        on_delete=models.SET_NULL,
-        null=True,
-        blank=True,
-        related_name="processed_submissions",
-    )
-
-    name = models.CharField(max_length=100)
-    email = models.EmailField()
-    category = models.CharField(
-        max_length=100,
-        choices=[
-            ("Development", "Стратегическое планирование и развитие бизнеса"),
-            ("Organization", "Организационная структура и управление персоналом"),
-            ("Finances", "Финансовое планирование и бюджетирование"),
-            ("Marketing", "Маркетинг и продвижение"),
-            ("Automatization", "Автоматизация бизнес-процессов"),
-            ("Bureaucracy", "Юридическое сопровождение и лицензирование"),
-            ("Investments", "Инвестиции и поиск партнёров"),
-        ],
-    )
-    description = models.TextField()
-    submission_date = models.DateTimeField(auto_now_add=True)
-    status = models.CharField(
-        max_length=20,
-        choices=[
-            ("не рассмотрено", "Не рассмотрено"),
-            ("рассматривается", "Рассматривается"),
-            ("рассмотрено", "Рассмотрено"),
-        ],
-        default="не рассмотрено",
-    )
-    processed_at = models.DateTimeField(null=True, blank=True)
-
-    def __str__(self):
-        return self.name
-
-
 class Feedback(models.Model):
     STATUS_CHOICES = [
         ("не рассмотрено", "Не рассмотрено"),
@@ -79,6 +36,9 @@ class Feedback(models.Model):
     submission_date = models.DateTimeField(auto_now_add=True)
     status = models.CharField(
         max_length=20, choices=STATUS_CHOICES, default="не рассмотрено"
+    )
+    assigned_to = models.ForeignKey(
+        User, null=True, blank=True, on_delete=models.SET_NULL
     )
 
     def __str__(self):

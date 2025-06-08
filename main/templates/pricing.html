@@ -1,0 +1,137 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="pricing-page container">
+
+  <h1 class="pricing-title">Ценообразование</h1>
+
+  <section class="card">
+    <h2>Найм в штат высококвалифицированных руководителей</h2>
+    <p class="subtitle">(директора по продажам, развитию, финансам, аналитика и маркетолога, специалиста по обучению и подготовке сотрудников)</p>
+    <ul>
+      <li>«собственный» специалист постоянно погружен в деятельность компании</li>
+      <li>возможность напрямую управлять нанятыми сотрудниками</li>
+      <li>усиление команды</li>
+      <li>возможность непосредственно влиять на способы решения стоящих перед сотрудниками задач</li>
+      <li>потенциал, масштаб и эффективность изменений ограничены уровнем компетентности собственника и руководителей</li>
+      <li>затруднены изменения из-за высокого влияния на работу новых сотрудников сложившейся в компании корпоративной культурой, необходимости адаптации, неготовности топ-менеджеров к изменениям</li>
+      <li>наёмный сотрудник крайне редко доводит негативную информацию собственнику и руководителю, что делает данные для принятия решения необъективными, приводит к погрешностям и снижению скорости</li>
+      <li>операционные издержки на запуск новых инициатив: высокий риск противоречий и конфликтов внутри организации, замедляющих изменения, противодействие от «заслуженных» работников компании</li>
+    </ul>
+    <div class="icon-row">
+      <strong>Время</strong>
+      <div class="icons">
+        {% for i in "12345" %}
+        <svg class="icon clock filled" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="12" cy="12" r="10"/>
+          <polyline points="12 6 12 12 16 14"/>
+        </svg>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="icon-row">
+      <strong>Стоимость</strong>
+      <div class="icons">
+        {% for i in "12345" %}
+        <svg class="icon money filled" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+          <rect x="2" y="7" width="20" height="10" rx="2" ry="2"/>
+          <path d="M12 12v4M10 10h4a2 2 0 0 1 0 4h-4a2 2 0 0 1 0-4z"/>
+        </svg>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>Реализация изменений с командой «Технологии развития»</h2>
+    <ul>
+      <li>специализация в проведении изменений, повышающих конкурентоспособность</li>
+      <li>взаимодополняющая друг друга команда специалистов с опытом решения сложных задач и экспертизой, которую затруднительно получить в сжатые сроки с помощью наемных сотрудников</li>
+      <li>акцент на работу с конкурентными факторами, глубокое исследование конкурентов, клиентов, рыночного окружения и выявление лучших практик</li>
+      <li>доступные для большинства компаний российского рынка условия сотрудничества</li>
+      <li>основанное на опыте понимание возможных трудностей, связанных с изменениями и способов их преодоления, эффективное упреждение рисков</li>
+      <li>деликатный, системный, основанный на всестороннем анализе компании, подход к каждому шагу изменений с максимальным погружением</li>
+      <li>необходимость инвестировать в процесс стратегических изменений</li>
+      <li>необходимость глубокой вовлеченности первого лица в работу с нашей командой</li>
+      <li>ориентация на решение конкретных задач, а не на развитие всего персонала организации</li>
+      <li>необходимость работать в условиях дискомфорта, связанного с изменениями</li>
+    </ul>
+    <div class="icon-row">
+      <strong>Время</strong>
+      <div class="icons">
+        {% for i in "123" %}
+        <svg class="icon clock filled" viewBox="0 0 24 24" fill="none" stroke="#007acc" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="12" cy="12" r="10"/>
+          <polyline points="12 6 12 12 16 14"/>
+        </svg>
+        {% endfor %}
+        {% for i in "45" %}
+        <svg class="icon clock empty" viewBox="0 0 24 24" fill="none" stroke="#a3c4f3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="12" cy="12" r="10"/>
+          <polyline points="12 6 12 12 16 14"/>
+        </svg>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="icon-row">
+      <strong>Стоимость</strong>
+      <div class="icons">
+        {% for i in "123" %}
+        <svg class="icon money filled" viewBox="0 0 24 24" fill="none" stroke="#008040" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+          <rect x="2" y="7" width="20" height="10" rx="2" ry="2"/>
+          <path d="M12 12v4M10 10h4a2 2 0 0 1 0 4h-4a2 2 0 0 1 0-4z"/>
+        </svg>
+        {% endfor %}
+        {% for i in "45" %}
+        <svg class="icon money empty" viewBox="0 0 24 24" fill="none" stroke="#a3d7b3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+          <rect x="2" y="7" width="20" height="10" rx="2" ry="2"/>
+          <path d="M12 12v4M10 10h4a2 2 0 0 1 0 4h-4a2 2 0 0 1 0-4z"/>
+        </svg>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>Международная консалтинговая компания</h2>
+    <ul>
+      <li>известное имя и впечатляющий уровень клиентов</li>
+      <li>высокий уровень рыночной аналитики и экспертизы</li>
+      <li>профессиональные эксперты с международным опытом</li>
+      <li>результат точно в срок и в рамках утвержденного бюджета</li>
+      <li>высокая стоимость решений</li>
+      <li>акцент на «утвержденные процедуры», глубокое погружение будет затратным для клиента</li>
+      <li>низкая вовлеченность в реализацию изменений, слабая увязка предложений с ресурсами компании, «бумажный» характер работы</li>
+      <li>в ряде случаев: попытки адаптировать западную теорию и практику на российскую организацию, «ментальная» и «технологическая» несовместимость в подходах</li>
+    </ul>
+    <div class="icon-row">
+      <strong>Время</strong>
+      <div class="icons">
+        {% for i in "12" %}
+        <svg class="icon clock filled" viewBox="0 0 24 24" fill="none" stroke="#007acc" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="12" cy="12" r="10"/>
+          <polyline points="12 6 12 12 16 14"/>
+        </svg>
+        {% endfor %}
+        {% for i in "345" %}
+        <svg class="icon clock empty" viewBox="0 0 24 24" fill="none" stroke="#a3c4f3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="12" cy="12" r="10"/>
+          <polyline points="12 6 12 12 16 14"/>
+        </svg>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="icon-row">
+      <strong>Стоимость</strong>
+      <div class="icons">
+        {% for i in "12345" %}
+        <svg class="icon money filled" viewBox="0 0 24 24" fill="none" stroke="#008040" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+          <rect x="2" y="7" width="20" height="10" rx="2" ry="2"/>
+          <path d="M12 12v4M10 10h4a2 2 0 0 1 0 4h-4a2 2 0 0 1 0-4z"/>
+        </svg>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+</div>
+{% endblock %}

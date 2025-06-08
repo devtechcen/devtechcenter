@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from .models import Submission, Feedback
+from .models import Feedback
 
 
 class CustomUserCreationForm(UserCreationForm):
@@ -26,18 +26,6 @@ class CustomUserCreationForm(UserCreationForm):
         self.fields["password2"].widget.attrs.update(
             {"class": "input", "autocomplete": "new-password"}
         )
-
-
-class SubmissionForm(forms.ModelForm):
-    class Meta:
-        model = Submission
-        fields = ["name", "email", "category", "description"]
-        labels = {
-            "name": "Название",
-            "email": "Email",
-            "category": "Категория",
-            "description": "Описание",
-        }
 
 
 class FeedbackForm(forms.ModelForm):

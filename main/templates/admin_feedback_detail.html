@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="profile-wrapper">
+  <h2>Детали формы</h2>
+  <div class="detail-card">
+    <p><strong>ID:</strong> {{ feedback.id }}</p>
+    <p><strong>Название:</strong> {{ feedback.name }}</p>
+    <p><strong>Email:</strong> {{ feedback.email }}</p>
+    <p><strong>Телефон:</strong> {{ feedback.phone }}</p>
+    <p><strong>Описание:</strong> {{ feedback.description }}</p>
+    <p><strong>Дата подачи:</strong> {{ feedback.submission_date|date:"d.m.Y H:i" }}</p>
+    <p><strong>Статус:</strong> {{ feedback.status }}</p>
+    <p><strong>Назначенный менеджер:</strong>
+      {% if feedback.assigned_to %}
+        {{ feedback.assigned_to.username }}
+      {% else %}
+        Не назначен
+      {% endif %}
+    </p>
+
+    <form method="post" class="login-form">
+      {% csrf_token %}
+      <label for="manager">Назначить менеджера</label>
+      <select name="manager" id="manager" required>
+        {% for manager in managers %}
+        <option value="{{ manager.id }}" {% if feedback.assigned_to and feedback.assigned_to.id == manager.id %}selected{% endif %}>
+          {{ manager.username }}
+        </option>
+        {% endfor %}
+      </select>
+      <button type="submit" class="btn-login">Сохранить</button>
+    </form>
+  </div>
+</div>
+{% endblock %}

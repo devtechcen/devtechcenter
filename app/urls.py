@@ -27,32 +27,16 @@ urlpatterns = [
     path("about/", views.about, name="about"),
     path("contacts/", views.contacts, name="contacts"),
     path("faq/", views.faq, name="faq"),
+    path("pricing/", views.pricing, name="pricing"),
     path(
         "login/", auth_views.LoginView.as_view(template_name="login.html"), name="login"
     ),
     path("logout/", auth_views.LogoutView.as_view(next_page="/"), name="logout"),
     path("register/", views.register_view, name="register"),
-    path("create_submission/", views.create_submission_view, name="create_submission"),
-    path("submission_thanks/", views.submission_thanks, name="submission_thanks"),
     path("feedback/", views.feedback_view, name="feedback"),
     path("feedback/thanks/", views.feedback_thanks, name="feedback_thanks"),
     path("profile/", views.profile_view, name="profile"),
-    path(
-        "submission/edit/<int:submission_id>/",
-        views.edit_submission_view,
-        name="edit_submission",
-    ),
-    path(
-        "submission/delete/<int:submission_id>/",
-        views.delete_submission_view,
-        name="delete_submission",
-    ),
     path("manager_panel/", views.manager_panel, name="manager_panel"),
-    path(
-        "submission/<int:submission_id>/",
-        views.manager_submission_detail,
-        name="manager_submission_detail",
-    ),
     path(
         "manager/feedback/<int:pk>/",
         views.manager_feedback_detail,
@@ -65,13 +49,9 @@ urlpatterns = [
     ),
     path("admin-panel/", views.admin_panel_view, name="admin_panel_view"),
     path(
-        "admin-panel/submission/<int:submission_id>/",
-        views.admin_submission_detail_view,
-        name="admin_submission_detail",
+        "admin-panel/feedback/<int:feedback_id>/",
+        views.admin_feedback_detail_view,
+        name="admin_feedback_detail_view",
     ),
-    path(
-        "submission/<int:submission_id>/mark_processed/",
-        views.mark_as_processed,
-        name="mark_as_processed",
-    ),
+    path("services/", views.services, name="services"),
 ]

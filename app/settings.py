@@ -25,7 +25,7 @@ SECRET_KEY = "django-insecure-g=nu4x7=kcospvn)htk59^55z*n*67+c%i!6wf)q8d9c%i)@1r
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["devtechcenter.pythonanywhere.com", "127.0.0.1"]
 
 
 # Application definition
@@ -72,6 +72,20 @@ WSGI_APPLICATION = "app.wsgi.application"
 
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
+
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.mysql",
+#         "NAME": "devtechcenter$default",
+#         "USER": "devtechcenter",
+#         "PASSWORD": "azwesx123",
+#         "HOST": "devtechcenter.mysql.pythonanywhere-services.com",
+#         "PORT": "3306",
+#         "OPTIONS": {
+#             "init_command": "SET sql_mode='STRICT_TRANS_TABLES'",
+#         },
+#     }
+# }
 
 DATABASES = {
     "default": {

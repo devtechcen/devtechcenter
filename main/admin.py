@@ -2,25 +2,9 @@ from django.contrib import admin
 
 # Register your models here.
 from django.contrib import admin
-from .models import Submission, Feedback, UserProfile
+from .models import Feedback, UserProfile
 
 admin.site.register(UserProfile)
-
-
-@admin.register(Submission)
-class SubmissionAdmin(admin.ModelAdmin):
-    list_display = (
-        "id",
-        "name",
-        "email",
-        "category",
-        "status",
-        "employee",
-        "submission_date",
-        "processed_at",
-    )
-    list_filter = ("status", "category", "employee")
-    search_fields = ("name", "email", "description")
 
 
 @admin.register(Feedback)

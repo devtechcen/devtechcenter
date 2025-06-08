@@ -9,6 +9,8 @@
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
   </head>
   <body>
     <div class="page-container">
@@ -20,11 +22,18 @@
         </div>
         <div class="navbar-center">
           <nav class="nav-links">
-            <a href="{% url 'about' %}">О нас</a>
-            <a href="{% url 'create_submission' %}">Оставить заявку</a>
+            <a href="{% url 'main' %}">Главная</a>
+            <div class="dropdown">
+            <a href="#" class="dropdown-toggle">О нас</a>
+            <div class="dropdown-menu">
+              <a href="{% url 'about' %}">О компании</a>
+              <a href="{% url 'services' %}">Услуги</a>
+              <a href="{% url 'faq' %}">FAQ</a>
+            </div>
+          </div>
             <a href="{% url 'contacts' %}">Контакты</a>
-            <a href="{% url 'feedback' %}">Форма обратной связи</a>
-            <a href="{% url 'faq' %}">FAQ</a>
+            <a href="{% url 'pricing' %}">Ценообразование</a>
+            <a href="{% url 'feedback' %}">Обратная связь</a>
           </nav>
         </div>
         <div class="navbar-right">
@@ -49,17 +58,16 @@
           >
             {% csrf_token %}
             <button type="submit" class="icon-link btn-logout">
-              <svg width="20" height="20"><!-- Выйти icon --></svg>
+            <i class="fa fa-door-open"></i>
               Выйти
             </button>
           </form>
           {% else %}
           <a href="{% url 'login' %}" class="icon-link">
-            <svg width="20" height="20"><!-- Вход icon --></svg>
+            <i class="fas fa-right-to-bracket"></i>
             Вход
           </a>
           <a href="{% url 'register' %}" class="icon-link">
-            <svg width="20" height="20"><!-- Регистрация icon --></svg>
             Регистрация
           </a>
           {% endif %}
