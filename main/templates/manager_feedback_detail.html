@@ -12,6 +12,8 @@
     <strong>Дата подачи:</strong> {{ feedback.submission_date|date:"d.m.Y H:i" }}
   </p>
 
+  <p><strong>Дата обработки:</strong> {% if feedback.processed_at %}{{ feedback.processed_at|date:"d.m.Y H:i" }}{% else %}-{% endif %}</p>
+
   {% if feedback.status != 'рассмотрено' %}
   <p class="login-link">
     <a href="{% url 'mark_feedback_reviewed' feedback.id %}"

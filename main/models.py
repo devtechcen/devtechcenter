@@ -41,6 +41,18 @@ class Feedback(models.Model):
         User, null=True, blank=True, on_delete=models.SET_NULL
     )
 
+    processed_at = models.DateTimeField(null=True, blank=True)
+
+    def save(self, *args, **kwargs):
+        if self.pk:
+            old = Feedback.objects.get(pk=self.pk)
+            if old.status != "рассмотрено" and self.status == "рассмотрено":
+                self.processed_at = timezone.now()
+        elif self.status == "рассмотрено":
+            self.processed_at = timezone.now()
+
+        super().save(*args, **kwargs)
+
     def __str__(self):
         return f"{self.name} ({self.status})"
 

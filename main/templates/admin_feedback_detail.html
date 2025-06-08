@@ -10,6 +10,8 @@
     <p><strong>Описание:</strong> {{ feedback.description }}</p>
     <p><strong>Дата подачи:</strong> {{ feedback.submission_date|date:"d.m.Y H:i" }}</p>
     <p><strong>Статус:</strong> {{ feedback.status }}</p>
+    <p><strong>Дата обработки:</strong> {% if feedback.processed_at %}{{ feedback.processed_at|date:"d.m.Y H:i" }}{% else %}-{% endif %}</p>
+
     <p><strong>Назначенный менеджер:</strong>
       {% if feedback.assigned_to %}
         {{ feedback.assigned_to.username }}
