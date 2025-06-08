@@ -4,6 +4,7 @@
   <head>
     <meta charset="UTF-8" />
     <title>Центр технологии развития</title>
+    <link rel="icon" type="image/png" href="{% static 'icons/favicon.png' %}">
     <link rel="stylesheet" href="{% static 'css/base.css' %}" />
     <link
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap"
@@ -31,9 +32,9 @@
               <a href="{% url 'faq' %}">FAQ</a>
             </div>
           </div>
-            <a href="{% url 'contacts' %}">Контакты</a>
             <a href="{% url 'pricing' %}">Ценообразование</a>
-            <a href="{% url 'feedback' %}">Обратная связь</a>
+            <a href="{% url 'feedback' %}">Оставить заявку</a>
+            <a href="{% url 'contacts' %}">Контакты</a>
           </nav>
         </div>
         <div class="navbar-right">
