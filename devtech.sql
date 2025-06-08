@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jun 07, 2025 at 04:33 PM
+-- Generation Time: Jun 08, 2025 at 02:23 PM
 -- Server version: 8.0.42
 -- PHP Version: 8.0.1
 
@@ -124,10 +124,10 @@ CREATE TABLE `auth_user` (
 --
 
 INSERT INTO `auth_user` (`id`, `password`, `last_login`, `is_superuser`, `username`, `first_name`, `last_name`, `email`, `is_staff`, `is_active`, `date_joined`) VALUES
-(1, 'pbkdf2_sha256$1000000$5i60HuN8bADxxPgTk9TpPL$s3Qt/gdNmwctScrA76gJkR2HREzmSmzECfRgCoI+DeQ=', '2025-06-07 13:50:20.517403', 1, 'admin', '', '', 'admin@gmail.com', 1, 1, '2025-06-06 15:30:55.733136'),
-(2, 'pbkdf2_sha256$1000000$wkTlR0bZTOpDDpvh5vUWhW$KTnVHp1NGeRBEj8oPx4kBZDG6hsmgRPmGpjdk7c6Gd8=', '2025-06-07 12:49:00.879189', 0, 'vasiliy', '', '', 'vasya@gmail.com', 0, 1, '2025-06-06 16:27:49.905028'),
-(3, 'pbkdf2_sha256$1000000$QH8TJYaFEVifBwkWpxGzLc$JxFfifkAAE0JvhwccSmbE/WVV7kIC5TZtt02roSKiiE=', '2025-06-07 15:16:17.076211', 0, 'dima', '', '', 'dima@gmail.com', 0, 1, '2025-06-06 16:29:43.219839'),
-(4, 'pbkdf2_sha256$1000000$cRsJB5w7ZzdXkaK5el63Wu$fONht+QtpYScatIrt+/TdZ7Gz23Ip4MIzN8iSt66yhQ=', '2025-06-07 15:16:24.754113', 0, 'nataly', '', '', 'nataly@gmail.com', 0, 1, '2025-06-06 16:32:52.454765'),
+(1, 'pbkdf2_sha256$1000000$5i60HuN8bADxxPgTk9TpPL$s3Qt/gdNmwctScrA76gJkR2HREzmSmzECfRgCoI+DeQ=', '2025-06-08 13:41:32.865091', 1, 'admin', '', '', 'admin@gmail.com', 1, 1, '2025-06-06 15:30:55.733136'),
+(2, 'pbkdf2_sha256$1000000$wkTlR0bZTOpDDpvh5vUWhW$KTnVHp1NGeRBEj8oPx4kBZDG6hsmgRPmGpjdk7c6Gd8=', '2025-06-08 14:09:02.433880', 0, 'vasiliy', '', '', 'vasya@gmail.com', 0, 1, '2025-06-06 16:27:49.905028'),
+(3, 'pbkdf2_sha256$1000000$QH8TJYaFEVifBwkWpxGzLc$JxFfifkAAE0JvhwccSmbE/WVV7kIC5TZtt02roSKiiE=', '2025-06-08 13:41:10.343471', 0, 'dima', '', '', 'dima@gmail.com', 0, 1, '2025-06-06 16:29:43.219839'),
+(4, 'pbkdf2_sha256$1000000$cRsJB5w7ZzdXkaK5el63Wu$fONht+QtpYScatIrt+/TdZ7Gz23Ip4MIzN8iSt66yhQ=', '2025-06-08 13:39:18.990674', 0, 'nataly', '', '', 'nataly@gmail.com', 0, 1, '2025-06-06 16:32:52.454765'),
 (5, 'pbkdf2_sha256$1000000$Nocj8KS1ah5F7NMuPwbGMt$KiVues8/3Jy6so6+mDuxR10zMMnuCFfj+Fyq+S/yc6Y=', '2025-06-07 13:49:48.483675', 0, 'ivan', '', '', 'ivan@gmail.com', 0, 1, '2025-06-06 16:35:11.169289'),
 (6, 'pbkdf2_sha256$1000000$Ueq8JCW0YbdTBSHTZ8ZlRr$dQ26Fnu0dYKwyN56okMdV8XQbC0tTsl2EP+vRWRF5ns=', '2025-06-06 16:40:01.469961', 0, 'alina', '', '', 'alina@gmail.com', 0, 1, '2025-06-06 16:40:00.791883');
 
@@ -239,7 +239,8 @@ INSERT INTO `django_migrations` (`id`, `app`, `name`, `applied`) VALUES
 (20, 'main', '0002_userprofile', '2025-06-06 16:05:54.748870'),
 (21, 'main', '0003_remove_submission_surname_submission_email', '2025-06-06 16:44:09.406887'),
 (22, 'main', '0004_submission_user_alter_submission_category_and_more', '2025-06-06 17:19:56.001577'),
-(23, 'main', '0005_alter_submission_category', '2025-06-07 13:29:49.455495');
+(23, 'main', '0005_alter_submission_category', '2025-06-07 13:29:49.455495'),
+(24, 'main', '0006_feedback_assigned_to_delete_submission', '2025-06-08 13:09:11.655459');
 
 -- --------------------------------------------------------
 
@@ -258,8 +259,7 @@ CREATE TABLE `django_session` (
 --
 
 INSERT INTO `django_session` (`session_key`, `session_data`, `expire_date`) VALUES
-('7zwhkpnkcmpbb4q1yxle3hre1klimbcv', '.eJxVjDsOwyAQRO9CHSG-xqRM7zOgZReCkwhLxq6i3D1YcpGU8-bNvFmAfSthb2kNM7ErU-zyyyLgM9WjoAfU-8Jxqds6R34o_GwbnxZKr9vp_h0UaKWvQZAflAMAEkpiznbEHI3I3mmJyfoeUrJORxxIOqUxGjKQqcNRg2efLwwWOSE:1uNsip:G2lYg37yYX9K0Z-azX736YkzH_rUhxQFb3RzdGnxBMY', '2025-06-21 12:32:27.800020'),
-('fi9t19phcd14gzrviaby6a1khm219mpv', '.eJxVjDsOwjAQBe_iGlm2s_5R0nMGa_1ZHEC2FCcV4u4QKQW0b2beiwXc1hq2UZYwZ3ZmwE6_W8T0KG0H-Y7t1nnqbV3myHeFH3Twa8_leTncv4OKo37rkj04BYSEwgMZNJAmIZC09gajltJYNykETwbAJjAaUVkLPjtJk2DvD9ueNyA:1uNvHU:1a2NdTRcZDDxwCZmsGbV88NIDc-dpbvmLRTNU7yjbAU', '2025-06-21 15:16:24.758103');
+('7zwhkpnkcmpbb4q1yxle3hre1klimbcv', '.eJxVjDsOwyAQRO9CHSG-xqRM7zOgZReCkwhLxq6i3D1YcpGU8-bNvFmAfSthb2kNM7ErU-zyyyLgM9WjoAfU-8Jxqds6R34o_GwbnxZKr9vp_h0UaKWvQZAflAMAEkpiznbEHI3I3mmJyfoeUrJORxxIOqUxGjKQqcNRg2efLwwWOSE:1uNsip:G2lYg37yYX9K0Z-azX736YkzH_rUhxQFb3RzdGnxBMY', '2025-06-21 12:32:27.800020');
 
 -- --------------------------------------------------------
 
@@ -274,45 +274,18 @@ CREATE TABLE `main_feedback` (
   `phone` varchar(20) NOT NULL,
   `description` longtext NOT NULL,
   `submission_date` datetime(6) NOT NULL,
-  `status` varchar(20) NOT NULL
+  `status` varchar(20) NOT NULL,
+  `assigned_to_id` int DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Dumping data for table `main_feedback`
 --
 
-INSERT INTO `main_feedback` (`id`, `name`, `email`, `phone`, `description`, `submission_date`, `status`) VALUES
-(1, 'Ильнар', 'ilnar@gmail.com', '12482374', 'Не могу зарегистрироватся на сайте, выдает ошибку', '2025-06-06 17:02:03.323642', 'рассмотрено'),
-(2, 'Сослан', 'soslan@gmail.com', '4923871', 'Выдает ошибку когда отправляю заявку', '2025-06-07 15:27:13.325949', 'не рассмотрено');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `main_submission`
---
-
-CREATE TABLE `main_submission` (
-  `id` bigint NOT NULL,
-  `name` varchar(100) NOT NULL,
-  `category` varchar(100) NOT NULL,
-  `description` longtext NOT NULL,
-  `submission_date` datetime(6) NOT NULL,
-  `status` varchar(20) NOT NULL,
-  `processed_at` datetime(6) DEFAULT NULL,
-  `employee_id` int DEFAULT NULL,
-  `email` varchar(254) NOT NULL,
-  `user_id` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
-
---
--- Dumping data for table `main_submission`
---
-
-INSERT INTO `main_submission` (`id`, `name`, `category`, `description`, `submission_date`, `status`, `processed_at`, `employee_id`, `email`, `user_id`) VALUES
-(6, 'Создание предприятия', 'Bureaucracy', 'Мне нужна консультация по поводу создания предприятия и организации документов.', '2025-06-07 13:31:48.311722', 'рассматривается', NULL, 4, 'admin@gmail.com', 1),
-(7, 'Помощь по рекламе бизнеса', 'Marketing', 'Здравствуйте. Мне нужна помощь. Не могу выбрать подходящий рекламный подход для своего бизнеса по доставке букетов.', '2025-06-07 13:35:40.227765', 'рассматривается', NULL, 2, 'dima@gmail.com', 3),
-(8, 'Набор квалифицированного персонала', 'Organization', 'Мне нужны совету по набору опытного персонала.', '2025-06-07 13:50:14.059316', 'не рассмотрено', NULL, NULL, 'ivan@gmail.com', 5),
-(9, 'Игорь', 'Automatization', 'Нужна помощь с интеграцией CRM систем', '2025-06-07 15:30:59.696919', 'не рассмотрено', NULL, NULL, 'igor@gmail.com', 4);
+INSERT INTO `main_feedback` (`id`, `name`, `email`, `phone`, `description`, `submission_date`, `status`, `assigned_to_id`) VALUES
+(1, 'Ильнар', 'ilnar@gmail.com', '12482374', 'Не могу зарегистрироватся на сайте, выдает ошибку', '2025-06-06 17:02:03.323642', 'рассмотрено', 2),
+(2, 'Сослан', 'soslan@gmail.com', '4923871', 'Выдает ошибку когда отправляю заявку', '2025-06-07 15:27:13.325949', 'рассмотрено', 4),
+(3, 'Интеграция CRM систем', 'dima@gmail.com', '32418', 'Хочу интегрировать систему CRM в свой бизнес.', '2025-06-08 12:52:10.643240', 'рассмотрено', 2);
 
 -- --------------------------------------------------------
 
@@ -419,15 +392,8 @@ ALTER TABLE `django_session`
 -- Indexes for table `main_feedback`
 --
 ALTER TABLE `main_feedback`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `main_submission`
---
-ALTER TABLE `main_submission`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `main_submission_employee_id_7d19c040_fk_auth_user_id` (`employee_id`),
-  ADD KEY `main_submission_user_id_3808c258_fk_auth_user_id` (`user_id`);
+  ADD KEY `main_feedback_assigned_to_id_e7d580f4_fk_auth_user_id` (`assigned_to_id`);
 
 --
 -- Indexes for table `main_userprofile`
@@ -492,19 +458,13 @@ ALTER TABLE `django_content_type`
 -- AUTO_INCREMENT for table `django_migrations`
 --
 ALTER TABLE `django_migrations`
-  MODIFY `id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `main_feedback`
 --
 ALTER TABLE `main_feedback`
-  MODIFY `id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT for table `main_submission`
---
-ALTER TABLE `main_submission`
-  MODIFY `id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `main_userprofile`
@@ -551,11 +511,10 @@ ALTER TABLE `django_admin_log`
   ADD CONSTRAINT `django_admin_log_user_id_c564eba6_fk_auth_user_id` FOREIGN KEY (`user_id`) REFERENCES `auth_user` (`id`);
 
 --
--- Constraints for table `main_submission`
+-- Constraints for table `main_feedback`
 --
-ALTER TABLE `main_submission`
-  ADD CONSTRAINT `main_submission_employee_id_7d19c040_fk_auth_user_id` FOREIGN KEY (`employee_id`) REFERENCES `auth_user` (`id`),
-  ADD CONSTRAINT `main_submission_user_id_3808c258_fk_auth_user_id` FOREIGN KEY (`user_id`) REFERENCES `auth_user` (`id`);
+ALTER TABLE `main_feedback`
+  ADD CONSTRAINT `main_feedback_assigned_to_id_e7d580f4_fk_auth_user_id` FOREIGN KEY (`assigned_to_id`) REFERENCES `auth_user` (`id`);
 
 --
 -- Constraints for table `main_userprofile`
