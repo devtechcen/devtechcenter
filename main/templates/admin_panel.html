@@ -1,7 +1,21 @@
 {% extends "base.html" %}
+
+{% block breadcrumbs %}
+  <div class="breadcrumb-container">
+    <nav class="breadcrumb">
+      <a href="{% url 'main' %}">Главная</a>
+      <span class="separator">&gt;</span>
+      <span>Админ-панель</span>
+    </nav>
+  </div>
+{% endblock %}
+
 {% block content %}
 <div class="profile-wrapper">
   <h2>Список всех обращений</h2>
+  <a href="{% url 'admin_stats_download' %}" class="excel-download-btn">
+    Скачать статистику менеджеров
+  </a>
 
   <!-- Фильтрация -->
   <form method="get" class="filter-form" style="margin-bottom: 1rem;">

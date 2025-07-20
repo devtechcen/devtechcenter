@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block breadcrumbs %}
+  <div class="breadcrumb-container">
+    <nav class="breadcrumb">
+      <a href="{% url 'main' %}">Главная</a>
+      <span class="separator">&gt;</span>
+      <span>Истории успеха</span>
+    </nav>
+  </div>
+{% endblock %}
+
+{% block content %}
+<section class="info-grid">
+  <div class="info-block text-block">
+    <h2>Истории успеха наших клиентов</h2>
+    <p>
+      За годы работы мы помогли десяткам компаний достичь новых высот. Вот несколько примеров успешных проектов, реализованных при поддержке Центра Технологии Развития.
+    </p>
+  </div>
+  <div class="info-block image-block">
+    <img src="{% static 'img/strategy-planning.jpg' %}" alt="Успешный проект" />
+  </div>
+
+  <div class="info-block text-block">
+    <h3>1. Рост производственной компании</h3>
+    <p>
+      После внедрения системы стратегического планирования и оптимизации бизнес-процессов, клиент увеличил объём продаж на 35% за год и вышел на новые рынки.
+    </p>
+  </div>
+  <div class="info-block image-block">
+    <img src="{% static 'img/analytics.jpg' %}" alt="Рост компании" />
+  </div>
+
+  <div class="info-block text-block">
+    <h3>2. Автоматизация и цифровая трансформация</h3>
+    <p>
+      Для крупного дистрибьютора была реализована цифровая трансформация: автоматизация складских операций и внедрение CRM-системы позволили сократить издержки на 20% и повысить удовлетворённость клиентов.
+    </p>
+  </div>
+  <div class="info-block image-block">
+    <img src="{% static 'img/consulting.webp' %}" alt="Автоматизация бизнеса" />
+  </div>
+
+  <div class="info-block text-block">
+    <h3>3. Образовательные программы для HR</h3>
+    <p>
+      В рамках корпоративного обучения для HR-отдела торговой сети были проведены тренинги по развитию управленческих компетенций, что позволило снизить текучесть персонала на 15%.
+    </p>
+  </div>
+  <div class="info-block image-block">
+    <img src="{% static 'img/education.jpg' %}" alt="Образовательные программы" />
+  </div>
+</section>
+{% endblock %} 

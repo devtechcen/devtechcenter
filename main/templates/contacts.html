@@ -1,5 +1,17 @@
-{% extends 'base.html' %} {% load static %} {% block content %}
+{% extends 'base.html' %}
+{% load static %}
 
+{% block breadcrumbs %}
+  <div class="breadcrumb-container">
+    <nav class="breadcrumb">
+      <a href="{% url 'main' %}">Главная</a>
+      <span class="separator">&gt;</span>
+      <span>Контакты</span>
+    </nav>
+  </div>
+{% endblock %}
+
+{% block content %}
 <section class="contacts-container">
   <h1>Контакты</h1>
   <div class="contact-item">
@@ -26,5 +38,4 @@
     ></iframe>
   </div>
 </section>
-
 {% endblock %}

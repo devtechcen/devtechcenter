@@ -1,5 +1,17 @@
-{% extends 'base.html' %} {% load static %} {% block content %}
+{% extends 'base.html' %}
+{% load static %}
 
+{% block breadcrumbs %}
+  <div class="breadcrumb-container">
+    <nav class="breadcrumb">
+      <a href="{% url 'main' %}">Главная</a>
+      <span class="separator">&gt;</span>
+      <span>О компании</span>
+    </nav>
+  </div>
+{% endblock %}
+
+{% block content %}
 <section class="info-grid">
   <div class="info-block text-block">
     <h2>Наша миссия</h2>
@@ -10,21 +22,18 @@
       роста.
     </p>
   </div>
-
   <div class="info-block image-block">
     <img
       src="{% static 'img/team-collaboration.jpg' %}"
       alt="Team Collaboration"
     />
   </div>
-
   <div class="info-block image-block">
     <img
       src="{% static 'img/strategy-planning.jpg' %}"
       alt="Strategy Planning"
     />
   </div>
-
   <div class="info-block text-block">
     <h2>Наши ценности</h2>
     <p>
@@ -33,7 +42,6 @@
       взаимном доверии и высоком качестве предоставляемых услуг.
     </p>
   </div>
-
   <div class="info-block text-block">
     <h2>Команда профессионалов</h2>
     <p>
@@ -42,10 +50,8 @@
       предлагать нашим клиентам самые современные и эффективные решения.
     </p>
   </div>
-
   <div class="info-block image-block">
     <img src="{% static 'img/consultants.jpg' %}" alt="Our Consultants" />
   </div>
 </section>
-
 {% endblock %}

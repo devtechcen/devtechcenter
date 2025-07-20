@@ -6,6 +6,8 @@ from .models import Feedback
 from django.utils import timezone
 from django.contrib.auth.models import User
 from django.core.paginator import Paginator
+import openpyxl
+from django.http import HttpResponse
 
 
 # Create your views here.
@@ -53,7 +55,7 @@ def register_view(request):
 
 def feedback_view(request):
     if request.method == "POST":
-        form = FeedbackForm(request.POST)
+        form = FeedbackForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
             return redirect("feedback_thanks")
@@ -190,3 +192,28 @@ def mark_as_processed(request, feedback_id):
     feedback.status = "рассмотрено"
     feedback.save()
     return redirect("manager_panel")
+
+
+def success_stories(request):
+    return render(request, 'success_stories.html')
+
+
+@user_passes_test(is_admin, login_url="login")
+def admin_stats_download(request):
+    if not is_admin(request.user):
+        return redirect('login')
+    from django.contrib.auth.models import User
+    from .models import Feedback
+    wb = openpyxl.Workbook()
+    ws = wb.active
+    ws.title = 'Статистика менеджеров'
+    ws.append(['Менеджер', 'Активные заявки', 'Завершённые заявки'])
+    managers = User.objects.filter(userprofile__role='manager')
+    for manager in managers:
+        active_count = Feedback.objects.filter(assigned_to=manager, status__in=["не рассмотрено", "рассматривается"]).count()
+        completed_count = Feedback.objects.filter(assigned_to=manager, status="рассмотрено").count()
+        ws.append([manager.username, active_count, completed_count])
+    response = HttpResponse(content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
+    response['Content-Disposition'] = 'attachment; filename=manager_stats.xlsx'
+    wb.save(response)
+    return response

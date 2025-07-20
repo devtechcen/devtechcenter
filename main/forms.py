@@ -29,14 +29,16 @@ class CustomUserCreationForm(UserCreationForm):
 
 
 class FeedbackForm(forms.ModelForm):
+    file = forms.FileField(label="Файл (необязательно)", required=False)
     class Meta:
         model = Feedback
-        fields = ["name", "email", "phone", "description"]
+        fields = ["name", "email", "phone", "description", "file"]
         labels = {
             "name": "Название",
             "email": "Email",
             "phone": "Телефон",
             "description": "Описание",
+            "file": "Файл (необязательно)",
         }
         widgets = {
             "name": forms.TextInput(attrs={"class": "input", "required": True}),

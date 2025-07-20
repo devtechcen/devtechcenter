@@ -42,6 +42,7 @@ class Feedback(models.Model):
     )
 
     processed_at = models.DateTimeField(null=True, blank=True)
+    file = models.FileField(upload_to='feedback_files/', null=True, blank=True)
 
     def save(self, *args, **kwargs):
         if self.pk:

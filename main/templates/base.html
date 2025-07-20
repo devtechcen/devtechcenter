@@ -1,96 +1,101 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="ru">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Центр технологии развития</title>
-    <link rel="icon" type="image/png" href="{% static 'icons/favicon.png' %}">
-    <link rel="stylesheet" href="{% static 'css/base.css' %}" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  {% load static %}
+  <!DOCTYPE html>
+  <html lang="ru">
+    <head>
+      <meta charset="UTF-8" />
+      <title>Центр технологии развития</title>
+      <link rel="icon" type="image/png" href="{% static 'icons/favicon.png' %}">
+      <link rel="stylesheet" href="{% static 'css/base.css' %}" />
+      <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet"
+      />
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-  </head>
-  <body>
-    <div class="page-container">
-      <header class="navbar" id="mainNavbar">
-        <div class="navbar-left">
-          <a href="{% url 'main' %}" class="site-title">
-            Центр технологии развития
-          </a>
-        </div>
-        <div class="navbar-center">
-          <nav class="nav-links">
-            <a href="{% url 'main' %}">Главная</a>
-            <div class="dropdown">
-            <a href="#" class="dropdown-toggle">О нас</a>
-            <div class="dropdown-menu">
-              <a href="{% url 'about' %}">О компании</a>
-              <a href="{% url 'services' %}">Услуги</a>
-              <a href="{% url 'faq' %}">FAQ</a>
-            </div>
+    </head>
+    <body>
+      <div class="page-container">
+        <header class="navbar" id="mainNavbar">
+          <div class="navbar-left">
+            <a href="{% url 'main' %}" class="site-title">
+              Центр технологии развития
+            </a>
           </div>
-            <a href="{% url 'pricing' %}">Ценообразование</a>
-            <a href="{% url 'feedback' %}">Оставить заявку</a>
-            <a href="{% url 'contacts' %}">Контакты</a>
-          </nav>
-        </div>
-        <div class="navbar-right">
-          {% if user.is_authenticated %}
-          <span class="nav-username"><strong>{{ user.username }}</strong></span>
-          {% if user.userprofile.role == 'admin' %}
-          <a href="{% url 'admin_panel_view' %}" class="icon-link"
-            >Админ-панель</a
-          >
-          {% elif user.userprofile.role == 'manager' %}
-          <a href="{% url 'manager_panel' %}" class="icon-link"
-            >Менеджмент панель</a
-          >
-          {% else %}
-          <a href="{% url 'profile' %}" class="icon-link">Личный кабинет</a>
-          {% endif %}
+          <div class="navbar-center">
+            <nav class="nav-links">
+              <a href="{% url 'main' %}">Главная</a>
+              <div class="dropdown">
+              <a href="#" class="dropdown-toggle">О нас</a>
+              <div class="dropdown-menu">
+                <a href="{% url 'about' %}">О компании</a>
+                <a href="{% url 'success_stories' %}">Истории успеха</a>
+                <a href="{% url 'services' %}">Услуги</a>
+                <a href="{% url 'faq' %}">FAQ</a>
+              </div>
+            </div>
+              <a href="{% url 'pricing' %}">Ценообразование</a>
+              <a href="{% url 'feedback' %}">Оставить заявку</a>
+              <a href="{% url 'contacts' %}">Контакты</a>
+            </nav>
+          </div>
+          <div class="navbar-right">
+            {% if user.is_authenticated %}
+            <span class="nav-username"><strong>{{ user.username }}</strong></span>
+            {% if user.userprofile.role == 'admin' %}
+            <a href="{% url 'admin_panel_view' %}" class="icon-link"
+              >Админ-панель</a
+            >
+            {% elif user.userprofile.role == 'manager' %}
+            <a href="{% url 'manager_panel' %}" class="icon-link"
+              >Менеджмент панель</a
+            >
+            {% else %}
+            <a href="{% url 'profile' %}" class="icon-link">Личный кабинет</a>
+            {% endif %}
 
-          <form
-            method="post"
-            action="{% url 'logout' %}"
-            style="display: inline"
-          >
-            {% csrf_token %}
-            <button type="submit" class="icon-link btn-logout">
-            <i class="fa fa-door-open"></i>
-              Выйти
-            </button>
-          </form>
-          {% else %}
-          <a href="{% url 'login' %}" class="icon-link">
-            <i class="fas fa-right-to-bracket"></i>
-            Вход
-          </a>
-          <a href="{% url 'register' %}" class="icon-link">
-            Регистрация
-          </a>
-          {% endif %}
-        </div>
-      </header>
+            <form
+              method="post"
+              action="{% url 'logout' %}"
+              style="display: inline"
+            >
+              {% csrf_token %}
+              <button type="submit" class="icon-link btn-logout">
+              <i class="fa fa-door-open"></i>
+                Выйти
+              </button>
+            </form>
+            {% else %}
+            <a href="{% url 'login' %}" class="icon-link">
+              <i class="fas fa-right-to-bracket"></i>
+              Вход
+            </a>
+            <a href="{% url 'register' %}" class="icon-link">
+              Регистрация
+            </a>
+            {% endif %}
+          </div>
+        </header>
 
-      <main class="main-content">{% block content %}{% endblock %}</main>
+        <main class="main-content">
+          {% block breadcrumbs %}{% endblock %}
+          {% block content %}{% endblock %}
+        </main>
 
-      <footer class="site-footer">
-        &copy; ООО "Центр Технологии Развития"
-      </footer>
-    </div>
+        <footer class="site-footer">
+          <span class="footer-name">Имя Фамилия</span>
+          &copy; ООО "Центр Технологии Развития"<br>
+        </footer>
+      </div>
 
-    <script>
-      window.addEventListener("scroll", function () {
-        const navbar = document.getElementById("mainNavbar");
-        if (window.scrollY > 0) {
-          navbar.classList.add("scrolled");
-        } else {
-          navbar.classList.remove("scrolled");
-        }
-      });
-    </script>
-  </body>
-</html>
+      <script>
+        window.addEventListener("scroll", function () {
+          const navbar = document.getElementById("mainNavbar");
+          if (window.scrollY > 0) {
+            navbar.classList.add("scrolled");
+          } else {
+            navbar.classList.remove("scrolled");
+          }
+        });
+      </script>
+    </body>
+  </html>

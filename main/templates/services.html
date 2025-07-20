@@ -1,7 +1,17 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block content %}
 
+{% block breadcrumbs %}
+  <div class="breadcrumb-container">
+    <nav class="breadcrumb">
+      <a href="{% url 'main' %}">Главная</a>
+      <span class="separator">&gt;</span>
+      <span>Услуги</span>
+    </nav>
+  </div>
+{% endblock %}
+
+{% block content %}
 <section class="info-grid">
   <div class="info-block text-block">
     <h2>Маркетинговые исследования</h2>
@@ -11,15 +21,12 @@
       и услуг.
     </p>
   </div>
-
   <div class="info-block image-block">
     <img src="{% static 'img/market-research.png' %}" alt="Market Research" />
   </div>
-
   <div class="info-block image-block">
     <img src="{% static 'img/strategy.jpg' %}" alt="Strategy Consulting" />
   </div>
-
   <div class="info-block text-block">
     <h2>Стратегическое консультирование</h2>
     <p>
@@ -28,7 +35,6 @@
       специфики.
     </p>
   </div>
-
   <div class="info-block text-block">
     <h2>Образовательные программы</h2>
     <p>
@@ -37,22 +43,11 @@
       продажи и развитие персонала.
     </p>
   </div>
-
   <div class="info-block image-block">
     <img src="{% static 'img/education.jpg' %}" alt="Educational Programs" />
   </div>
-
   <div class="info-block image-block">
     <img src="{% static 'img/analytics.jpg' %}" alt="Analytics and Reporting" />
   </div>
-
-  <div class="info-block text-block">
-    <h2>Аналитика и отчётность</h2>
-    <p>
-      Готовим подробные аналитические отчёты и рекомендации на основе
-      исследований и экспертной оценки, адаптированные под цели клиента.
-    </p>
-  </div>
 </section>
-
 {% endblock %}

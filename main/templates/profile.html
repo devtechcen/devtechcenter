@@ -1,32 +1,43 @@
-  {% extends "base.html" %} {% block content %}
-  <div class="profile-wrapper">
-    <h2>Мои обращения</h2>
+{% extends "base.html" %}
 
-    <div class="table-container">
-      <table class="submission-table">
-        <thead>
-          <tr>
-            <th>Имя</th>
-            <th>Email</th>
-            <th>Статус</th>
-            <th>Дата подачи</th>
-          </tr>
-        </thead>
-        <tbody>
-          {% for fb in feedbacks %}
-          <tr>
-            <td>{{ fb.name }}</td>
-            <td>{{ fb.email }}</td>
-            <td>{{ fb.status }}</td>
-            <td>{{ fb.submission_date|date:"d.m.Y H:i" }}</td>
-          </tr>
-          {% empty %}
-          <tr>
-            <td colspan="4">Обращения не найдены.</td>
-          </tr>
-          {% endfor %}
-        </tbody>
-      </table>
-    </div>
+{% block breadcrumbs %}
+  <div class="breadcrumb-container">
+    <nav class="breadcrumb">
+      <a href="{% url 'main' %}">Главная</a>
+      <span class="separator">&gt;</span>
+      <span>Личный кабинет</span>
+    </nav>
   </div>
-  {% endblock %}
+{% endblock %}
+
+{% block content %}
+<div class="profile-wrapper">
+  <h2>Мои обращения</h2>
+  <div class="table-container">
+    <table class="submission-table">
+      <thead>
+        <tr>
+          <th>Имя</th>
+          <th>Email</th>
+          <th>Статус</th>
+          <th>Дата подачи</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for fb in feedbacks %}
+        <tr>
+          <td>{{ fb.name }}</td>
+          <td>{{ fb.email }}</td>
+          <td>{{ fb.status }}</td>
+          <td>{{ fb.submission_date|date:"d.m.Y H:i" }}</td>
+        </tr>
+        {% empty %}
+        <tr>
+          <td colspan="4">Обращения не найдены.</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

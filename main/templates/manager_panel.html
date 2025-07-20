@@ -1,4 +1,15 @@
 {% extends "base.html" %}
+
+{% block breadcrumbs %}
+  <div class="breadcrumb-container">
+    <nav class="breadcrumb">
+      <a href="{% url 'main' %}">Главная</a>
+      <span class="separator">&gt;</span>
+      <span>Менеджмент панель</span>
+    </nav>
+  </div>
+{% endblock %}
+
 {% block content %}
 <div class="profile-wrapper">
   <h2>Менеджмент панель</h2>

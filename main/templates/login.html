@@ -1,31 +1,26 @@
-{% extends "base.html" %} {% block content %}
+{% extends "base.html" %}
+
+{% block breadcrumbs %}
+  <div class="breadcrumb-container">
+    <nav class="breadcrumb">
+      <a href="{% url 'main' %}">Главная</a>
+      <span class="separator">&gt;</span>
+      <span>Вход</span>
+    </nav>
+  </div>
+{% endblock %}
+
+{% block content %}
 <div class="login-container">
   <h2>Вход в систему</h2>
-
   <form method="post" action="{% url 'login' %}" class="login-form">
     {% csrf_token %} {% if form.errors %}
     <div class="error-message">Неверное имя пользователя или пароль</div>
     {% endif %}
-
     <label for="id_username">Имя пользователя</label>
-    <input
-      type="text"
-      name="username"
-      id="id_username"
-      required
-      autofocus
-      autocomplete="username"
-    />
-
+    <input type="text" name="username" id="id_username" required autofocus autocomplete="username" />
     <label for="id_password">Пароль</label>
-    <input
-      type="password"
-      name="password"
-      id="id_password"
-      required
-      autocomplete="current-password"
-    />
-
+    <input type="password" name="password" id="id_password" required autocomplete="current-password" />
     <button type="submit" class="btn-login">Войти</button>
   </form>
   <p class="login-link">

@@ -1,9 +1,18 @@
 {% extends "base.html" %}
+
+{% block breadcrumbs %}
+  <div class="breadcrumb-container">
+    <nav class="breadcrumb">
+      <a href="{% url 'main' %}">Главная</a>
+      <span class="separator">&gt;</span>
+      <span>Ценообразование</span>
+    </nav>
+  </div>
+{% endblock %}
+
 {% block content %}
 <div class="pricing-page container">
-
   <h1 class="pricing-title">Ценообразование</h1>
-
   <section class="card">
     <h2>Найм в штат высококвалифицированных руководителей</h2>
     <p class="subtitle">(директора по продажам, развитию, финансам, аналитика и маркетолога, специалиста по обучению и подготовке сотрудников)</p>

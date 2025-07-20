@@ -1,7 +1,21 @@
-{% extends "base.html" %} {% block content %}
+{% extends "base.html" %}
+
+{% block breadcrumbs %}
+  <div class="breadcrumb-container">
+    <nav class="breadcrumb">
+      <a href="{% url 'main' %}">Главная</a>
+      <span class="separator">&gt;</span>
+      <a href="{% url 'feedback' %}">Оставить заявку</a>
+      <span class="separator">&gt;</span>
+      <span>Спасибо</span>
+    </nav>
+  </div>
+{% endblock %}
+
+{% block content %}
 <div class="login-container">
   <h2>Мы приняли вашу заявку</h2>
-  <p>С вами свяжется наши менеджеры в течении дня.</p>
+  <p>В течении дня с Вами свяжется наш менеджер</p>
   <a href="{% url 'main' %}">Вернуться на главную</a>
 </div>
 {% endblock %}

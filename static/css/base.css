@@ -128,6 +128,16 @@ body {
     padding: 10px 0;
     font-size: 14px;
     font-weight: bold;
+    position: relative;
+}
+.footer-name {
+  position: absolute;
+  left: 24px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-weight: 600;
+  color: #003366;
+  font-size: 15px;
 }
 
 .hero-image {
@@ -307,6 +317,13 @@ iframe {
   font-weight: 600;
   color: #003366;
   font-size: 0.95rem;
+}
+
+.login-form label[for$='file'],
+.login-form input[type='file'] {
+  display: block;
+  margin-bottom: 16px;
+  margin-top: 8px;
 }
 
 .login-form input[type="text"],
@@ -577,4 +594,76 @@ select:focus, textarea:focus {
 }
 .icon.money.empty {
   color: #a3d7b3;
+}
+
+.breadcrumb-container {
+  max-width: 1280px;
+  margin: 0 auto 18px auto;
+  padding: 0 24px;
+}
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+  color: #2360a5;
+  margin: 18px 0;
+  padding: 0;
+  gap: 8px;
+  background: none;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  width: auto;
+}
+.breadcrumb a {
+  color: #2360a5;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+.breadcrumb a:hover {
+  color: #fa9304;
+  text-decoration: underline;
+}
+.breadcrumb .separator {
+  color: #b3d1f7;
+  margin: 0 4px;
+  font-size: 1.1em;
+  font-weight: bold;
+  user-select: none;
+}
+.breadcrumb span:last-child {
+  color: #003366;
+  font-weight: 600;
+}
+
+.excel-download-btn {
+  display: inline-block;
+  background: linear-gradient(90deg, #43cea2 0%, #185a9d 100%);
+  color: #fff;
+  font-weight: 600;
+  font-size: 16px;
+  border: none;
+  border-radius: 6px;
+  padding: 12px 32px;
+  text-decoration: none;
+  box-shadow: 0 2px 8px rgba(24,90,157,0.08);
+  transition: background 0.2s, box-shadow 0.2s;
+  margin: 0 0 24px 0;
+  cursor: pointer;
+  text-align: center;
+  line-height: 1.5;
+  vertical-align: middle;
+}
+.excel-download-btn:hover {
+  background: linear-gradient(90deg, #368f6e 0%, #14406a 100%);
+  color: #ffe082;
+  box-shadow: 0 4px 16px rgba(24,90,157,0.15);
+  text-decoration: none;
+}
+.excel-download-btn .excel-icon {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  vertical-align: middle;
 }

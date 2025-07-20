@@ -1,24 +1,45 @@
-{% extends "base.html" %} {% block content %}
+{% extends "base.html" %}
+
+{% block breadcrumbs %}
+  <div class="breadcrumb-container">
+    <nav class="breadcrumb">
+      <a href="{% url 'main' %}">Главная</a>
+      <span class="separator">&gt;</span>
+      <span>Оставить заявку</span>
+    </nav>
+  </div>
+{% endblock %}
+
+{% block content %}
 <div class="login-container">
   <h2>Оставить заявку</h2>
-
-  <form method="post" class="login-form">
-    {% csrf_token %} {% if form.errors %}
-    <div class="error-message">Пожалуйста, исправьте ошибки в форме.</div>
+  <form method="post" class="login-form" enctype="multipart/form-data">
+    {% csrf_token %}
+    {% if form.errors %}
+      <div class="error-message">
+        Пожалуйста, исправьте ошибки в форме:
+        <ul>
+          {% for field in form %}
+            {% for error in field.errors %}
+              <li><strong>{{ field.label }}:</strong> {{ error }}</li>
+            {% endfor %}
+          {% endfor %}
+          {% for error in form.non_field_errors %}
+            <li>{{ error }}</li>
+          {% endfor %}
+        </ul>
+      </div>
     {% endif %}
-
     <label for="{{ form.name.id_for_label }}">Имя</label>
     {{ form.name }}
-
     <label for="{{ form.email.id_for_label }}">Email</label>
     {{ form.email }}
-
     <label for="{{ form.phone.id_for_label }}">Телефон</label>
     {{ form.phone }}
-
     <label for="{{ form.description.id_for_label }}">Описание</label>
     {{ form.description }}
-
+    <label for="{{ form.file.id_for_label }}">Файл (необязательно)</label>
+    {{ form.file }}
     <button type="submit" class="btn-login">Отправить</button>
   </form>
 </div>

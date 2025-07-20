@@ -1,8 +1,18 @@
-{% extends 'base.html' %} {% block content %}
+{% extends 'base.html' %}
 
+{% block breadcrumbs %}
+  <div class="breadcrumb-container">
+    <nav class="breadcrumb">
+      <a href="{% url 'main' %}">Главная</a>
+      <span class="separator">&gt;</span>
+      <span>FAQ</span>
+    </nav>
+  </div>
+{% endblock %}
+
+{% block content %}
 <section class="faq-container">
   <h1>Часто задаваемые вопросы</h1>
-
   <div class="faq-item">
     <h3 class="question">1. Какие услуги предоставляет ваша компания?</h3>
     <p class="answer">
@@ -11,15 +21,13 @@
       трансформации бизнеса.
     </p>
   </div>
-
-    <div class="faq-item">
+  <div class="faq-item">
     <h3 class="question">2. Можно ли получить индивидуальное предложение?</h3>
     <p class="answer">
       Да, мы разрабатываем индивидуальные решения, адаптированные под
       потребности каждого клиента.
     </p>
   </div>
-
   <div class="faq-item">
     <h3 class="question">3. Как оставить заявку?</h3>
     <p class="answer">
@@ -27,7 +35,6 @@
       Заполните все обязательные поля и нажмите "Отправить".
     </p>
   </div>
-
   <div class="faq-item">
     <h3 class="question">4. Какие данные нужно указать в заявке?</h3>
     <p class="answer">
@@ -35,7 +42,6 @@
       почты, выбрать категорию заявки и кратко описать суть вашего запроса.
     </p>
   </div>
-
   <div class="faq-item">
     <h3 class="question">5. Что происходит после отправки заявки?</h3>
     <p class="answer">
@@ -99,5 +105,4 @@
     </p>
   </div>
 </section>
-
 {% endblock %}

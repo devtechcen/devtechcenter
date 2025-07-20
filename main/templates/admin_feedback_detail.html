@@ -1,7 +1,20 @@
 {% extends "base.html" %}
+
+{% block breadcrumbs %}
+  <div class="breadcrumb-container">
+    <nav class="breadcrumb">
+      <a href="{% url 'main' %}">Главная</a>
+      <span class="separator">&gt;</span>
+      <a href="{% url 'admin_panel_view' %}">Админ-панель</a>
+      <span class="separator">&gt;</span>
+      <span>Детали заявки</span>
+    </nav>
+  </div>
+{% endblock %}
+
 {% block content %}
 <div class="profile-wrapper">
-  <h2>Детали формы</h2>
+  <h2>Детали заявки</h2>
   <div class="detail-card">
     <p><strong>ID:</strong> {{ feedback.id }}</p>
     <p><strong>Название:</strong> {{ feedback.name }}</p>
@@ -11,7 +24,9 @@
     <p><strong>Дата подачи:</strong> {{ feedback.submission_date|date:"d.m.Y H:i" }}</p>
     <p><strong>Статус:</strong> {{ feedback.status }}</p>
     <p><strong>Дата обработки:</strong> {% if feedback.processed_at %}{{ feedback.processed_at|date:"d.m.Y H:i" }}{% else %}-{% endif %}</p>
-
+    {% if feedback.file %}
+      <p><strong>Файл:</strong> <a href="{{ feedback.file.url }}" download>Скачать файл</a></p>
+    {% endif %}
     <p><strong>Назначенный менеджер:</strong>
       {% if feedback.assigned_to %}
         {{ feedback.assigned_to.username }}
@@ -19,7 +34,6 @@
         Не назначен
       {% endif %}
     </p>
-
     <form method="post" class="login-form">
       {% csrf_token %}
       <label for="manager">Назначить менеджера</label>

@@ -1,10 +1,22 @@
-{% extends "base.html" %} {% block content %}
+{% extends "base.html" %}
+
+{% block breadcrumbs %}
+  <div class="breadcrumb-container">
+    <nav class="breadcrumb">
+      <a href="{% url 'main' %}">Главная</a>
+      <span class="separator">&gt;</span>
+      <a href="{% url 'profile' %}">Личный кабинет</a>
+      <span class="separator">&gt;</span>
+      <span>Удалить заявку</span>
+    </nav>
+  </div>
+{% endblock %}
+
+{% block content %}
 <div class="login-container confirm-delete-container">
   <h2>Удалить заявку?</h2>
   <p>
-    Вы уверены, что хотите удалить заявку: "<strong
-      >{{ submission.name }}</strong
-    >"?
+    Вы уверены, что хотите удалить заявку: "<strong>{{ submission.name }}</strong>"?
   </p>
   <form method="post">
     {% csrf_token %}

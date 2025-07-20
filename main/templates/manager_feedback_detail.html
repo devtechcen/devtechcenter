@@ -1,7 +1,20 @@
 {% extends "base.html" %}
+
+{% block breadcrumbs %}
+  <div class="breadcrumb-container">
+    <nav class="breadcrumb">
+      <a href="{% url 'main' %}">Главная</a>
+      <span class="separator">&gt;</span>
+      <a href="{% url 'manager_panel' %}">Менеджмент панель</a>
+      <span class="separator">&gt;</span>
+      <span>Детали заявки</span>
+    </nav>
+  </div>
+{% endblock %}
+
 {% block content %}
 <div class="login-container">
-  <h2>Детали отзыва</h2>
+  <h2>Детали заявки</h2>
 
   <p><strong>Имя:</strong> {{ feedback.name }}</p>
   <p><strong>Email:</strong> {{ feedback.email }}</p>
@@ -11,7 +24,9 @@
   <p>
     <strong>Дата подачи:</strong> {{ feedback.submission_date|date:"d.m.Y H:i" }}
   </p>
-
+  {% if feedback.file %}
+    <p><strong>Файл:</strong> <a href="{{ feedback.file.url }}" download>Скачать файл</a></p>
+  {% endif %}
   <p><strong>Дата обработки:</strong> {% if feedback.processed_at %}{{ feedback.processed_at|date:"d.m.Y H:i" }}{% else %}-{% endif %}</p>
 
   {% if feedback.status != 'рассмотрено' %}

@@ -1,4 +1,13 @@
 {% extends "base.html" %} {% block content %}
+{% block breadcrumbs %}
+  <nav class="breadcrumb">
+    <a href="{% url 'main' %}">Главная</a>
+    <span class="separator">&gt;</span>
+    <a href="{% url 'manager_panel' %}">Менеджмент панель</a>
+    <span class="separator">&gt;</span>
+    <span>Детали заявки</span>
+  </nav>
+{% endblock %}
 <div class="login-container">
   <h2>Детали заявки</h2>
 
